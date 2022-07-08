@@ -1,0 +1,66 @@
+{% load static %}
+
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'home/css/bootstrap.css' %}"
+/>
+
+<link
+        rel="stylesheet"
+        type="text/css"
+        href="{% static 'home/css/style.css' %}"
+/>
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste INOA</title>
+</head>
+<body>
+    <section class="login-card">
+        <div class="card">
+            <h5 class="card-header">LOGIN</h5>
+            <div class="card-body">
+                <form action="{% url 'inoa_site:validate_login' user_id=1 %}" method="post">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">username</span>
+                        <input
+                                type="text"
+                                name="username"
+                                class="form-control"
+                                placeholder="Username"
+                                aria-label="Username"
+                                aria-describedby="basic-addon1"
+                        >
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon2">password</span>
+                        <input
+                                type="text"
+                                name="password"
+                                class="form-control"
+                                placeholder="Password"
+                                aria-label="Password"
+                                aria-describedby="basic-addon2"
+                        >
+                    </div>
+                    {% if error_message %}<small>{error_message}</small>{% endif %}
+                    <div class="col-12">
+                        <button
+                                class="btn btn-primary"
+                                type="submit"
+                                name="login-button"
+                        >Login</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+</body>
+</html>
