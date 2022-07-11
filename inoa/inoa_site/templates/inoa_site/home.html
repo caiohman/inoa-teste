@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+
+{% load static %}
+
+<link
+        rel="stylesheet"
+        type="text/css"
+        href="{% static 'home/css/bootstrap.css' %}"
+/>
+
+<link
+        rel="stylesheet"
+        type="text/css"
+        href="{% static 'home/css/style.css' %}"
+/>
+
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste INOA</title>
 </head>
 <body>
+    <section>
+        <h1>Ola, {{user_detail}}</h1>
+    </section>
+    <section>
+        <div class="col-12">
+            <button
+                    class="btn btn-primary"
+                    type="submit"
+                    name="api-request"
+            >Login</button>
+        </div>
+    </section>
 
 </body>
 </html>

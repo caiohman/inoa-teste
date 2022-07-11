@@ -1,9 +1,9 @@
 {% load static %}
 
 <link
-    rel="stylesheet"
-    type="text/css"
-    href="{% static 'home/css/bootstrap.css' %}"
+        rel="stylesheet"
+        type="text/css"
+        href="{% static 'home/css/bootstrap.css' %}"
 />
 
 <link
@@ -11,7 +11,6 @@
         type="text/css"
         href="{% static 'home/css/style.css' %}"
 />
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -49,7 +48,7 @@
                                 aria-describedby="basic-addon2"
                         >
                     </div>
-                    {% if error_message %}<small>{error_message}</small>{% endif %}
+                    {% if error_message %}<small style="color: red">{{error_message}}</small>{% endif %}
                     <div class="col-12">
                         <button
                                 class="btn btn-primary"

@@ -17,9 +17,9 @@ def validate_login(request, user_id):
 
         print('O valor de button', button)
         if user.username == username and user.password == password:
-            return render(request, 'inoa_site/home.html', {})
+            return home(request, user_id)
         else:
-            return render(request, 'inoa_sites/index.html', {
+            return render(request, 'inoa_site/index.html', {
                 'error_message': 'choose username or password'
             })
     except ValueError:
@@ -29,5 +29,6 @@ def validate_login(request, user_id):
 
 
 def home(request, user_id):
-    context = UserDetail.objects.get(id=user_id).first_name
+    user_detail = UserDetail.objects.get(id=user_id).first_name
+    context = {'user_detail': user_detail}
     return render(request, 'inoa_site/home.html', context)
