@@ -24,7 +24,7 @@
         <div class="card">
             <h5 class="card-header">LOGIN</h5>
             <div class="card-body">
-                <form action="{% url 'inoa_site:validate_login' user_id=1 %}" method="post">
+                <form action="{% url 'inoa_site:validate_login' validate=1 %}" method="post">
                     {% csrf_token %}
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="basic-addon1">username</span>

@@ -7,25 +7,19 @@ def index(request):
     return render(request, 'inoa_site/index.html', {})
 
 
-def validate_login(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
+def validate_login(request, validate):
+    users = User.objects.all()
 
-    try:
-        button = request.POST['login-button']
-        username = request.POST['username']
-        password = request.POST['password']
+    username = request.POST['username']
+    password = request.POST['password']
 
-        print('O valor de button', button)
+    for user in users:
         if user.username == username and user.password == password:
-            return home(request, user_id)
-        else:
-            return render(request, 'inoa_site/index.html', {
-                'error_message': 'choose username or password'
-            })
-    except ValueError:
-        return render(request, 'inoa_site/index.html', {
-            'error_message': 'choose username or password'
-        })
+            return home(request, user.id)
+
+    return render(request, 'inoa_site/index.html', {
+        'error_message': 'choose a valid username or password'
+    })
 
 
 def home(request, user_id):
