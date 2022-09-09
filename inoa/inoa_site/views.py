@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import User, UserDetail
+from .api.api import Api
 
 
 # Create your views here.
@@ -24,5 +25,8 @@ def validate_login(request, validate):
 
 def home(request, user_id):
     user_detail = UserDetail.objects.get(id=user_id).first_name
-    context = {'user_detail': user_detail}
+    api = Api()
+    print(api.advice_message)
+    context = {'user_detail': user_detail,
+               'advice': api.advice_message}
     return render(request, 'inoa_site/home.html', context)
